@@ -33,5 +33,36 @@ function clickBtnGreen(){
 }
     updateGreen.addEventListener("click",clickBtnGreen);
 
+    // part 2
+    let submit = document.getElementById("submit");
+    submit.addEventListener("click",buttonCheck);
+    function buttonCheck(e){
+         e.preventDefault();
+        let allForm = [document.getElementById("exampleInputEmail1"),
+    document.getElementById("example-text-input"),
+    document.getElementById("exampleTextarea")];
+    for (let key of allForm) {
+        if (key.id === "exampleInputEmail1" && !key.value.includes('@')) {
+            key.value = "";
+        }
+        if (!key.value.length) {
+            document.getElementById(`${key.id}`).style.backgroundColor = "red";
+        }
+    }
+    if (allForm.every(input => input.value.length > 0)) {
+        allForm.map(input => {
+            input.value = "";
+            input.style.backgroundColor = "white";
+        });
+        alert(`Thank you for filling out the form`);
+    }
+
+
+    }
+
+    
+    
+
+
 
 
